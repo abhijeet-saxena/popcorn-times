@@ -42,29 +42,48 @@
       form button {
         padding: 1rem 2rem;
         font-size: 1rem;
-        background: rgb(3, 120, 255);
+        background: rgb(66, 154, 255);
         color: white;
         border-radius: 5px;
         cursor: pointer;
+        transition: 200ms ease-in-out;
+      }
+
+      form button:hover {
+        background: rgb(3, 120, 255);
+      }
+
+      form button:disabled,
+      form button:disabled:hover {
+        background: lightgray;
+        cursor: progress;
       }
     </style>
   </head>
   <body>
-    <form action="/search" method="GET">
+    <form onsubmit="submitForm()" action="/search" method="GET">
       <h1>Web Scraper</h1>
-      <label for="title"
+      <label for="titles"
         >Enter TV Series / Movie Title to get OTT providers:</label
       >
       <input
         type="text"
-        name="title"
-        id="title"
+        name="titles"
+        id="titles"
         placeholder="Ex. Friends"
         required
         autocomplete="off"
+        autofocus
       />
       <br />
-      <button type="submit">Search Title</button>
+      <button id="submit" type="submit">Search Title</button>
     </form>
   </body>
+
+  <script>
+    const submitForm = () => {
+      document.querySelector("#submit").innerText = "Loading...";
+      document.querySelector("#submit").disabled = true;
+    };
+  </script>
 </html>
