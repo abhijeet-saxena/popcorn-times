@@ -20,9 +20,9 @@ const initPuppeteer = async function (req, res, next) {
   next();
 };
 
-const scrape = async (title, page) => {
-  const tvShowURL = `https://www.justwatch.com/in/tv-show/${title}`;
-  const movieURL = `https://www.justwatch.com/in/movie/${title}`;
+const scrape = async (slugifiedTitle, page) => {
+  const tvShowURL = `https://www.justwatch.com/in/tv-show/${slugifiedTitle}`;
+  const movieURL = `https://www.justwatch.com/in/movie/${slugifiedTitle}`;
 
   try {
     // This will allow logging in dev environment
@@ -42,30 +42,34 @@ const scrape = async (title, page) => {
     });
 
     const scrappedInfo = await page.evaluate(async () => {
-      let outputArray = [];
+      const ottProviders = [];
       let elements = document.querySelectorAll(
         ".price-comparison__grid__row__element a"
       );
 
       for (let element of elements) {
         const url = new URL(decodeURIComponent(element.getAttribute("href")));
-
         const provider = element.childNodes[0].getAttribute("alt");
         const providerUrl = url.searchParams.get("r");
+        const alreadyExists = ottProviders.some(
+          (item) => item.provider === provider
+        );
 
-        if (outputArray.indexOf(provider) === -1) {
-          outputArray.push(provider);
-          outputArray.push(providerUrl);
+        if (!alreadyExists) {
+          ottProviders.push({
+            provider,
+            url: providerUrl,
+          });
         }
       }
-      return outputArray;
+
+      return ottProviders;
     });
     await page.close();
     return scrappedInfo;
   } catch (e) {
-    console.log(e.message);
     await page.close();
-    return ["No Streamer available", "Check title"];
+    return [{ provider: "No Streamer available. Check title.", url: "N/A" }];
   }
 };
 
@@ -78,12 +82,20 @@ app.use(initPuppeteer);
 
 // API Route to seatch for a title
 app.get("/search", async (req, res) => {
-  let { title } = req.query;
-  title = title.trim().replace(/[\s]+/g, "-");
-  const page = await browser.newPage();
-  const ottProviders = await scrape(title, page);
+  let { titles } = req.query;
+  titles = titles.split(",").map((item) => item.trim());
 
-  res.json({ providers: ottProviders });
+  const slugifiedTitles = titles.map((item) => item.replace(/[\s]+/g, "-"));
+
+  const returnObj = { data: [] };
+  for (let i = 0; i < slugifiedTitles.length; i++) {
+    if (slugifiedTitles[i] === "") continue;
+    const page = await browser.newPage();
+    const ottProviders = await scrape(slugifiedTitles[i], page);
+    returnObj.data.push({ title: titles[i], ottProviders });
+  }
+
+  res.json(returnObj);
 });
 
 app.listen(port, () => {
