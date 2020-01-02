@@ -6,11 +6,13 @@ const cors = require("cors");
 const port = process.env.PORT || 3000;
 
 app.use(cors());
-
 app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.render("home", { name: "a" });
+  res.render("home", {
+    ottProviders: [],
+    helpText: "Please visit /search/[your-search-title]",
+  });
 });
 
 let browser = null;
@@ -45,8 +47,7 @@ const scrape = async (title, page) => {
       timeout: 10000,
     });
 
-    let scrappedInfo = [];
-    scrappedInfo = await page.evaluate(async () => {
+    const scrappedInfo = await page.evaluate(async () => {
       let outputArray = [];
       let elements = document.querySelectorAll(
         ".price-comparison__grid__row__element a"
@@ -80,7 +81,7 @@ app.get("/search/:title", async (req, res) => {
   const { title } = req.params;
   const page = await browser.newPage();
   const ottProviders = await scrape(title, page);
-  res.render("home", { ottProviders });
+  res.render("home", { ottProviders, helpText: "" });
 });
 
 app.listen(port, () => {
