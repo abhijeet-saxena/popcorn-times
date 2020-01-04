@@ -18,7 +18,6 @@ let browser = null;
 const initPuppeteer = async function (req, res, next) {
   if (!browser) {
     browser = await puppeteer.launch({
-      headless: false,
       args: ["--no-sandbox", "--disk-cache-dir=./Temp/browser-cache-disk"],
     });
   }
