@@ -18,30 +18,36 @@ let browser = null;
 const initPuppeteer = async function (req, res, next) {
   if (!browser) {
     browser = await puppeteer.launch({
+      headless: false,
       args: ["--no-sandbox", "--disk-cache-dir=./Temp/browser-cache-disk"],
     });
   }
   next();
 };
 
-app.use(initPuppeteer);
-
-app.get("/search/:title", async (req, res) => {
-  const { title } = req.params;
-  let ottProviders = [];
+const scrape = async (title, page) => {
+  const tvShowURL = `https://www.justwatch.com/in/tv-show/${title}`;
+  const movieURL = `https://www.justwatch.com/in/movie/${title}`;
 
   try {
-    const page = await browser.newPage();
-
-    await page.goto(`https://www.justwatch.com/in/tv-show/${title}`);
-    await page.waitForSelector(".price-comparison__grid__row__element");
-
     // This will allow logging in dev environment
     if (process.env.TIER === "dev") {
       page.on("console", (consoleObj) => console.log(consoleObj.text()));
     }
 
-    ottProviders = await page.evaluate(() => {
+    page.on("response", async (resp) => {
+      if (resp.status() === 404 && resp.url().indexOf(movieURL) === -1)
+        await page.goto(movieURL);
+    });
+
+    await page.goto(tvShowURL);
+
+    await page.waitForSelector(".price-comparison__grid__row__element", {
+      timeout: 10000,
+    });
+
+    let scrappedInfo = [];
+    scrappedInfo = await page.evaluate(async () => {
       let outputArray = [];
       let elements = document.querySelectorAll(
         ".price-comparison__grid__row__element a"
@@ -53,17 +59,28 @@ app.get("/search/:title", async (req, res) => {
         const provider = element.childNodes[0].getAttribute("alt");
         const providerUrl = url.searchParams.get("r");
 
-        outputArray.push(provider);
-        outputArray.push(providerUrl);
+        if (outputArray.indexOf(provider) === -1) {
+          outputArray.push(provider);
+          outputArray.push(providerUrl);
+        }
       }
-
       return outputArray;
     });
-
     await page.close();
+    return scrappedInfo;
   } catch (e) {
-    console.log(e);
+    console.log(e.message);
+    await page.close();
+    return ["No Streamer available", "Check title"];
   }
+};
+
+app.use(initPuppeteer);
+
+app.get("/search/:title", async (req, res) => {
+  const { title } = req.params;
+  const page = await browser.newPage();
+  const ottProviders = await scrape(title, page);
   res.render("home", { ottProviders });
 });
 
