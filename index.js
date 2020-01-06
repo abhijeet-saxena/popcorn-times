@@ -13,26 +13,48 @@ app.get("/", (req, res) => {
   res.render("home", { name: "a" });
 });
 
+let browser = null;
+
+const initPuppeteer = async function (req, res, next) {
+  if (!browser) {
+    browser = await puppeteer.launch({
+      headless: false,
+      args: ["--no-sandbox", "--disk-cache-dir=./Temp/browser-cache-disk"],
+    });
+  }
+  next();
+};
+
+app.use(initPuppeteer);
+
 app.get("/search/:title", async (req, res) => {
   const { title } = req.params;
-
   let ottProviders = [];
 
   try {
-    const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
     const page = await browser.newPage();
 
     await page.goto(`https://www.justwatch.com/in/tv-show/${title}`);
-
     await page.waitForSelector(".price-comparison__grid__row__element");
 
-    page.on("console", (consoleObj) => console.log(consoleObj.text()));
+    await page.setRequestInterception(true);
+
+    page.on("request", (rq) => {
+      if (rq.resourceType() === "image") rq.abort();
+      else rq.continue();
+    });
+
+    // This will allow logging in dev environment
+    if (process.env.TIER === "dev") {
+      page.on("console", (consoleObj) => console.log(consoleObj.text()));
+    }
 
     ottProviders = await page.evaluate(() => {
       let outputArray = [];
       let elements = document.querySelectorAll(
         ".price-comparison__grid__row__element a"
       );
+
       for (let element of elements) {
         const url = new URL(decodeURIComponent(element.getAttribute("href")));
 
@@ -46,7 +68,7 @@ app.get("/search/:title", async (req, res) => {
       return outputArray;
     });
 
-    await browser.close();
+    await page.close();
   } catch (e) {
     console.log(e);
   }
