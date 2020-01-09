@@ -16,34 +16,41 @@ app.get("/", (req, res) => {
 app.get("/search/:title", async (req, res) => {
   const { title } = req.params;
 
-  //   try {
-  //     const browser = await puppeteer.launch();
-  //     const page = await browser.newPage();
+  let ottProviders = [];
 
-  //     await page.goto(`https://www.justwatch.com/in/tv-show/${title}`);
+  try {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
 
-  //     await page.waitForSelector(".price-comparison__grid__row__element");
+    await page.goto(`https://www.justwatch.com/in/tv-show/${title}`);
 
-  //     page.on("console", (consoleObj) => console.log(consoleObj.text()));
+    await page.waitForSelector(".price-comparison__grid__row__element");
 
-  //     await page.evaluate(() => {
-  //       let elements = document.querySelectorAll(
-  //         ".price-comparison__grid__row__element a"
-  //       );
-  //       for (let element of elements) {
-  //         const url = new URL(decodeURIComponent(element.getAttribute("href")));
+    page.on("console", (consoleObj) => console.log(consoleObj.text()));
 
-  //         console.log(url.searchParams.get("r"));
+    ottProviders = await page.evaluate(() => {
+      let outputArray = [];
+      let elements = document.querySelectorAll(
+        ".price-comparison__grid__row__element a"
+      );
+      for (let element of elements) {
+        const url = new URL(decodeURIComponent(element.getAttribute("href")));
 
-  //         console.log(element.childNodes[0].getAttribute("alt"));
-  //       }
-  //     });
+        const provider = element.childNodes[0].getAttribute("alt");
+        const providerUrl = url.searchParams.get("r");
 
-  //     await browser.close();
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  res.render("home", { name: title });
+        outputArray.push(provider);
+        outputArray.push(providerUrl);
+      }
+
+      return outputArray;
+    });
+
+    await browser.close();
+  } catch (e) {
+    console.log(e);
+  }
+  res.render("home", { ottProviders });
 });
 
 app.listen(port, () => {
