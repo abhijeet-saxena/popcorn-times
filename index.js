@@ -3,6 +3,8 @@ const puppeteer = require("puppeteer");
 const app = express();
 const cors = require("cors");
 
+const port = process.env.PORT || 3000;
+
 app.use(cors());
 
 app.set("view engine", "ejs");
@@ -44,6 +46,6 @@ app.get("/search/:title", async (req, res) => {
   res.render("home", { name: title });
 });
 
-app.listen(3000, () => {
-  console.log(`Server running at 3000`);
+app.listen(port, () => {
+  console.log(`Server running at ${port}`);
 });
