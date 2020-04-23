@@ -1,0 +1,32 @@
+{
+  "name": "web-crawler",
+  "version": "1.0.0",
+  "description": "A simple web crawler to search for OTT providers",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsRockyy/web-crawler.git"
+  },
+  "keywords": [
+    "web",
+    "crawler"
+  ],
+  "author": "Abhijeet Saxena",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itsRockyy/web-crawler/issues"
+  },
+  "homepage": "https://github.com/itsRockyy/web-crawler#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "puppeteer": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
