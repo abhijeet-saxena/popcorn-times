@@ -18,7 +18,6 @@ let browser = null;
 const initPuppeteer = async function (req, res, next) {
   if (!browser) {
     browser = await puppeteer.launch({
-      headless: false,
       args: ["--no-sandbox", "--disk-cache-dir=./Temp/browser-cache-disk"],
     });
   }
@@ -36,13 +35,6 @@ app.get("/search/:title", async (req, res) => {
 
     await page.goto(`https://www.justwatch.com/in/tv-show/${title}`);
     await page.waitForSelector(".price-comparison__grid__row__element");
-
-    await page.setRequestInterception(true);
-
-    page.on("request", (rq) => {
-      if (rq.resourceType() === "image") rq.abort();
-      else rq.continue();
-    });
 
     // This will allow logging in dev environment
     if (process.env.TIER === "dev") {
