@@ -81,7 +81,8 @@ app.get("/search/:title", async (req, res) => {
   const { title } = req.params;
   const page = await browser.newPage();
   const ottProviders = await scrape(title, page);
-  res.render("home", { ottProviders, helpText: "" });
+
+  res.json({ providers: ottProviders });
 });
 
 app.listen(port, () => {
