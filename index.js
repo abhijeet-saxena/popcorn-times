@@ -8,16 +8,10 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  res.render("home", {
-    ottProviders: [],
-    helpText: "Please visit /search/[your-search-title]",
-  });
-});
-
 let browser = null;
 
 const initPuppeteer = async function (req, res, next) {
+  //Use singleton instance if browser already opened
   if (!browser) {
     browser = await puppeteer.launch({
       args: ["--no-sandbox", "--disk-cache-dir=./Temp/browser-cache-disk"],
@@ -75,10 +69,17 @@ const scrape = async (title, page) => {
   }
 };
 
+// Landing page Route
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
 app.use(initPuppeteer);
 
-app.get("/search/:title", async (req, res) => {
-  const { title } = req.params;
+// API Route to seatch for a title
+app.get("/search", async (req, res) => {
+  let { title } = req.query;
+  title = title.trim().replace(/[\s]+/g, "-");
   const page = await browser.newPage();
   const ottProviders = await scrape(title, page);
 
