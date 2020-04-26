@@ -2,6 +2,8 @@
 
 A simple web crawler that searches OTT providers for a particular TV series or movie
 
+<img src ="demo.gif" alt="demo" />
+
 ## JSON API Endpoint
 
 https://bms-web-scrapper.herokuapp.com/search/[slugified-search-string]
