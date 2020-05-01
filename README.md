@@ -12,12 +12,21 @@ https://bms-web-scrapper.herokuapp.com/search?title=[slugified-search-string]
 
 ```
 {
-providers: [
-        "Netflix",
-        "http://www.netflix.com/title/70153404",
-        "Hotstar",
-        "http://www.hotstar.com/1000050598"
-    ]
+  "data": [
+    {
+      "title": "friends",
+      "ottProviders": [
+        {
+          "provider": "Netflix",
+          "url": "http://www.netflix.com/title/70153404"
+        },
+        {
+          "provider": "Hotstar",
+          "url": "http://www.hotstar.com/1000050598"
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -58,14 +67,15 @@ function updateProviders() {
     var inputTitle = sheet.getRange(row, 2).getValue();
     if(inputTitle === "") continue;
 
-    var response = UrlFetchApp.fetch("https://bms-web-scrapper.herokuapp.com/search?title="+inputTitle);
-    var json = response.getContentText();
-    var data = JSON.parse(json);
+    var apiResponse = UrlFetchApp.fetch("https://bms-web-scrapper.herokuapp.com/search?titles="+inputTitle);
+    var response = JSON.parse(apiResponse.getContentText());
+    var providers = response.data[0].ottProviders
 
     var count = 3;
-    for(var i=0; i<20;i++){
-      sheet.getRange(row, count).setValue(data.providers[i] ? data.providers[i] : '-');
-      count++
+    for(var i=0; i<providers.length;i++){
+      sheet.getRange(row, count).setValue(providers[i].provider ? providers[i].provider : '-');
+      sheet.getRange(row, count+1).setValue(providers[i].url ? providers[i].url : '-');
+      count += 2
     }
  }
 }
@@ -76,14 +86,15 @@ function runOnEdit(e) {
  var inputTitle = e.range.getSheet().getActiveCell().getValue();
  var row = e.range.getSheet().getActiveCell().getRow();
 
- var response = UrlFetchApp.fetch("https://bms-web-scrapper.herokuapp.com/search?title="+inputTitle);
- var json = response.getContentText();
- var data = JSON.parse(json);
+ var apiResponse = UrlFetchApp.fetch("https://bms-web-scrapper.herokuapp.com/search?titles="+inputTitle);
+ var response = JSON.parse(apiResponse.getContentText());
+ var providers = response.data[0].ottProviders
 
  var count = 3;
- for(var i=0; i<20;i++){
-   e.source.getActiveSheet().getRange(row, count).setValue(data.providers[i] ? data.providers[i] : '-');
-   count++
+ for(var i=0; i<providers.length;i++){
+   e.source.getActiveSheet().getRange(row, count).setValue(providers[i].provider ? providers[i].provider : '-');
+   e.source.getActiveSheet().getRange(row, count+1).setValue(providers[i].url ? providers[i].url : '-');
+   count += 2
  }
 }
 ```
