@@ -55,10 +55,10 @@ function updateProviders() {
   var sheet = SpreadsheetApp.getActiveSheet();
 
   for(var row=2; row<=sheet.getLastRow();row++){
-    var inputTitle = sheet.getRange(row, 2).getValue().trim().replace(/[\s]+/g,'-');
+    var inputTitle = sheet.getRange(row, 2).getValue();
     if(inputTitle === "") continue;
 
-    var response = UrlFetchApp.fetch("https://bms-web-scrapper.herokuapp.com/search/"+inputTitle);
+    var response = UrlFetchApp.fetch("https://bms-web-scrapper.herokuapp.com/search?title="+inputTitle);
     var json = response.getContentText();
     var data = JSON.parse(json);
 
@@ -73,10 +73,10 @@ function updateProviders() {
 // This function will run whenever we update a title
 function runOnEdit(e) {
  if (e.range.columnStart !== 2 || !e.value || e.range.rowStart === 1) return;
- var inputTitle = e.range.getSheet().getActiveCell().getValue().trim().replace(/[\s]+/g,'-');
+ var inputTitle = e.range.getSheet().getActiveCell().getValue();
  var row = e.range.getSheet().getActiveCell().getRow();
 
- var response = UrlFetchApp.fetch("https://bms-web-scrapper.herokuapp.com/search/"+inputTitle);
+ var response = UrlFetchApp.fetch("https://bms-web-scrapper.herokuapp.com/search?title="+inputTitle);
  var json = response.getContentText();
  var data = JSON.parse(json);
 
@@ -87,3 +87,5 @@ function runOnEdit(e) {
  }
 }
 ```
+
+Made with ️❤︎ by **[Rocky](https://itsrockyy.me/ "Abhijeet Saxena")**
