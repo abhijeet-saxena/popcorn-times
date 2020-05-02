@@ -1,12 +1,12 @@
 # web-crawler
 
-A simple web crawler that searches OTT providers for a particular TV series or movie
+<img src ="Logo.png" alt="Popcorn" />
 
-<img src ="demo.gif" alt="demo" />
+A simple web crawler that searches OTT providers for a particular TV series or movie.
 
 ## JSON API Endpoint
 
-https://bms-web-scrapper.herokuapp.com/search?title=[slugified-search-string]
+https://bms-web-scrapper.herokuapp.com/search?titles=[slugified-search-string]&json=true
 
 #### Sample Response
 
@@ -15,24 +15,30 @@ https://bms-web-scrapper.herokuapp.com/search?title=[slugified-search-string]
   "data": [
     {
       "title": "friends",
+      "poster": "https://images.justwatch.com/poster/177294807/s592",
       "ottProviders": [
         {
           "provider": "Netflix",
-          "url": "http://www.netflix.com/title/70153404"
+          "url": "http://www.netflix.com/title/70153404",
+          "icon": "https://images.justwatch.com/icon/430997/s100"
         },
         {
           "provider": "Hotstar",
-          "url": "http://www.hotstar.com/1000050598"
+          "url": "http://www.hotstar.com/1000050598",
+          "icon": "https://images.justwatch.com/icon/174849096/s100"
         }
       ]
     }
-  ]
+  ],
+  "results": 1
 }
 ```
 
 ## Google Sheets Link
 
 https://docs.google.com/spreadsheets/d/1iGvKRLYnDj2GIW1K2wy1bFPIfRF_4njw_69YuTmXcNQ/edit
+
+<img src ="demo.gif" alt="Demo" />
 
 ### Script Code needed in Sheets
 
