@@ -21,9 +21,9 @@ const initPuppeteer = async function (req, res, next) {
   next();
 };
 
-const scrape = async (slugifiedTitle, page) => {
-  const tvShowURL = `https://www.justwatch.com/in/tv-show/${slugifiedTitle}`;
-  const movieURL = `https://www.justwatch.com/in/movie/${slugifiedTitle}`;
+const scrape = async (slugifiedTitle, locale, page) => {
+  const tvShowURL = `https://www.justwatch.com/${locale}/tv-show/${slugifiedTitle}`;
+  const movieURL = `https://www.justwatch.com/${locale}/movie/${slugifiedTitle}`;
 
   try {
     // This will allow logging in dev environment
@@ -102,7 +102,7 @@ app.use(initPuppeteer);
 
 // API Route to seatch for a title
 app.get("/search", async (req, res) => {
-  let { titles, json } = req.query;
+  let { titles, json, locale = "in" } = req.query;
   titles = titles.split(",").map((item) => item.trim());
   const slugifiedTitles = titles.map((item) => item.replace(/[\s]+/g, "-"));
   const returnObj = { data: [], results: 0 };
@@ -112,6 +112,7 @@ app.get("/search", async (req, res) => {
     const page = await browser.newPage();
     const { poster = "N/A", ottProviders = [] } = await scrape(
       slugifiedTitles[i],
+      locale,
       page
     );
     if (ottProviders.length) returnObj.results++;
