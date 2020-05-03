@@ -6,11 +6,16 @@ A simple web crawler that searches OTT providers for a particular TV series or m
 
 https://bms-web-scrapper.herokuapp.com
 
+## Technical Implementation
+
+All info is gathered from https://www.justwatch.com/.
+App levereges [Puppeteer](https://pptr.dev/) to scrape the information and [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/) to spin up a simple server with [ejs](https://ejs.co/) as templating engine.
+
 ## JSON API Endpoint
 
 https://bms-web-scrapper.herokuapp.com/search?titles=[slugified-search-string]&json=true
 
-#### Sample Response
+### Sample Response
 
 ```
 {
@@ -36,7 +41,7 @@ https://bms-web-scrapper.herokuapp.com/search?titles=[slugified-search-string]&j
 }
 ```
 
-## Google Sheets Link
+## Google Sheets Integration
 
 https://docs.google.com/spreadsheets/d/1iGvKRLYnDj2GIW1K2wy1bFPIfRF_4njw_69YuTmXcNQ/edit
 
@@ -106,5 +111,13 @@ function runOnEdit(e) {
  }
 }
 ```
+
+### **Disclaimer**
+
+All rights belong to their respective owners. I do not own any of this content. This app is meant for experimental/educational purposes only as a discovery platform with no commercial intent.
+
+This website may contain copyrighted material, the use of which may not have been specifically authorized by the copyright owner. The material contained in this website is distributed without profit for educational purposes. Only small portions of the original work are being used and those could not be used easily to duplicate the original work.
+
+If you wish to use any copyrighted material from this site for purposes of your own that go beyond ‘fair use’, you must obtain expressed permission from the copyright owner.
 
 Made with ️❤︎ by **[Rocky](https://itsrockyy.me/ "Abhijeet Saxena")**
