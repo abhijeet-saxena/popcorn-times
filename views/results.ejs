@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       Popcorn | <%= !results ? 'Not Found' : data.map(item => item.title) %>
     </title>
-    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
+    <%- include('./partials/head') %>
   </head>
   <style>
     * {
@@ -17,7 +15,6 @@
     body {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       min-height: 100vh;
       width: 100vw;
@@ -26,7 +23,7 @@
     h1 {
       font-size: 3rem;
       text-align: center;
-      margin: 1rem auto 3rem;
+      margin: 125px auto 1rem;
     }
     main {
       display: flex;
@@ -75,7 +72,6 @@
     @media only screen and (max-width: 600px) {
       h1 {
         font-size: 2.25rem;
-        margin: 1rem auto 1rem;
       }
       main {
         justify-content: center;
@@ -93,6 +89,7 @@
     }
   </style>
   <body>
+    <%- include('./partials/header') %>
     <h1>Your Search Results</h1>
     <main>
       <% if(!results) {%>

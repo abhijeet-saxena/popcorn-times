@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Popcorn</title>
-    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
-
+    <%- include('./partials/head') %>
     <style>
       * {
         margin: 0;
@@ -77,6 +74,7 @@
     </style>
   </head>
   <body>
+    <%- include('./partials/header') %>
     <form onsubmit="submitForm()" action="/search" method="GET">
       <h1>Web Scraper</h1>
       <label for="titles"
