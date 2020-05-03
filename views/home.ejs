@@ -30,20 +30,48 @@
 
       form h1 {
         font-size: 3.5rem;
-      }
-
-      form label {
-        margin: 2rem 0 0.5rem 0;
-        color: darkgray;
-        text-align: center;
+        margin: 2rem 0;
       }
 
       form input {
         padding: 1rem;
-        width: 80%;
-        max-width: 600px;
+        padding-left: 3rem;
         border: solid 1px rgba(0, 0, 0, 0.5);
         border-radius: 5px;
+      }
+
+      form label {
+        color: darkgray;
+        text-align: center;
+        padding-bottom: 0.5rem;
+      }
+
+      .input-group {
+        position: relative;
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
+      }
+
+      form select {
+        -o-appearance: none;
+        -ms-appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        height: 49px;
+        padding: 0.25rem;
+        font-size: 2rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        background: white;
+        border-radius: 0px;
+        border-right: none;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
       }
 
       form button {
@@ -70,6 +98,9 @@
         form h1 {
           font-size: 2.5rem;
         }
+        .input-group {
+          width: 80vw;
+        }
       }
     </style>
   </head>
@@ -77,18 +108,26 @@
     <%- include('./partials/header') %>
     <form onsubmit="submitForm()" action="/search" method="GET">
       <h1>Web Scraper</h1>
-      <label for="titles"
-        >Enter TV Series / Movie Title to get OTT providers:</label
-      >
-      <input
-        type="text"
-        name="titles"
-        id="titles"
-        placeholder="Ex. Friends"
-        required
-        autocomplete="off"
-        autofocus
-      />
+      <div class="input-group">
+        <label for="titles"
+          >Enter TV Series / Movie Title to get OTT providers:</label
+        >
+        <select name="locale" id="locale">
+          <option value="in">🇮🇳</option>
+          <option value="us">🇺🇸</option>
+          <option value="uk">🇬🇧</option>
+          <option value="ca">🇨🇦</option>
+        </select>
+        <input
+          type="text"
+          name="titles"
+          id="titles"
+          placeholder="Ex. Friends"
+          required
+          autocomplete="off"
+          autofocus
+        />
+      </div>
       <br />
       <button id="submit" type="submit">Search Title</button>
     </form>

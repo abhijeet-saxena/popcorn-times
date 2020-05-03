@@ -102,7 +102,7 @@ app.use(initPuppeteer);
 
 // API Route to seatch for a title
 app.get("/search", async (req, res) => {
-  let { titles, json, locale = "in" } = req.query;
+  let { titles = "", json = false, locale = "in" } = req.query;
   titles = titles.split(",").map((item) => item.trim());
   const slugifiedTitles = titles.map((item) => item.replace(/[\s]+/g, "-"));
   const returnObj = { data: [], results: 0 };
