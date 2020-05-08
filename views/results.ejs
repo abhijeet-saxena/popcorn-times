@@ -38,7 +38,7 @@
       width: 245px;
       min-height: 350px;
       margin: 1rem;
-      border: solid 1px lightgray;
+      border: solid 1px transparent;
       border-radius: 5px;
     }
     .card .poster {
@@ -57,6 +57,9 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      background: white;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
     }
     .links a {
       text-decoration: none;
@@ -78,6 +81,7 @@
       }
     }
   </style>
+  <img id="bg-overlay" src="./background-overlay.jpg" alt="" />
   <body>
     <%- include('./partials/header') %>
     <h1>Your Search Results</h1>

@@ -29,8 +29,9 @@
       }
 
       form h1 {
-        font-size: 3.5rem;
+        font-size: 5rem;
         margin: 2rem 0;
+        font-family: "Londrina Shadow", cursive;
       }
 
       form input {
@@ -38,6 +39,7 @@
         padding-left: 3rem;
         border: solid 1px rgba(0, 0, 0, 0.5);
         border-radius: 5px;
+        background: white;
       }
 
       form label {
@@ -77,15 +79,16 @@
       form button {
         padding: 1rem 2rem;
         font-size: 1rem;
-        background: rgb(66, 154, 255);
+        background: rgb(3, 120, 255);
         color: white;
+        border-color: transparent;
         border-radius: 5px;
         cursor: pointer;
         transition: 200ms ease-in-out;
       }
 
       form button:hover {
-        background: rgb(3, 120, 255);
+        background: navy;
       }
 
       form button:disabled,
@@ -96,7 +99,7 @@
 
       @media only screen and (max-width: 600px) {
         form h1 {
-          font-size: 2.5rem;
+          font-size: 4rem;
         }
         .input-group {
           width: 80vw;
@@ -104,10 +107,11 @@
       }
     </style>
   </head>
+  <img id="bg-overlay" src="./background-overlay.jpg" alt="" />
   <body>
     <%- include('./partials/header') %>
     <form onsubmit="submitForm()" action="/search" method="GET">
-      <h1>Web Scraper</h1>
+      <h1>Popcorn</h1>
       <div class="input-group">
         <label for="titles"
           >Enter TV Series / Movie Title to get OTT providers:</label

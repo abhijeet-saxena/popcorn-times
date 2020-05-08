@@ -15,14 +15,17 @@
     outline: none;
   }
 
+  body {
+    color: white;
+  }
+
   nav {
     width: 100vw;
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1;
     display: flex;
-    background: white;
-    z-index: 2;
     padding: 1rem;
   }
 
@@ -62,6 +65,14 @@
     transform: scale(1.5);
   }
 
+  #bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    -webkit-filter: brightness(25%);
+    z-index: -1;
+  }
+
   footer {
     position: fixed;
     display: flex;
@@ -77,6 +88,7 @@
 
   footer a {
     margin-left: 5px;
+    color: white;
   }
 
   @keyframes beat {
