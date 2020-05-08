@@ -21,9 +21,8 @@ const initPuppeteer = async function (req, res, next) {
   next();
 };
 
-const scrape = async (slugifiedTitle, locale, page) => {
-  const tvShowURL = `https://www.justwatch.com/${locale}/tv-show/${slugifiedTitle}`;
-  const movieURL = `https://www.justwatch.com/${locale}/movie/${slugifiedTitle}`;
+const scrape = async (title, locale, type, page) => {
+  const searchURL = `https://www.justwatch.com/${locale}/search?q=${title}&content_type=${type}`;
 
   try {
     // This will allow logging in dev environment
@@ -31,50 +30,46 @@ const scrape = async (slugifiedTitle, locale, page) => {
       page.on("console", (consoleObj) => console.log(consoleObj.text()));
     }
 
-    page.on("response", async (resp) => {
-      if (resp.status() === 404 && resp.url().indexOf(movieURL) === -1)
-        await page.goto(movieURL);
-    });
+    // page.on("response", async (resp) => {
+    //   if (resp.status() === 404 && resp.url().indexOf(movieURL) === -1)
+    //     await page.goto(movieURL);
+    // });
 
-    await page.goto(tvShowURL);
+    await page.goto(searchURL);
 
-    await page.waitForSelector(".price-comparison__grid__row__element", {
+    await page.waitForSelector(".title-poster__image", {
       timeout: 10000,
     });
 
     const scrappedInfo = await page.evaluate(async () => {
       const ottProviders = [];
-      let elements = document.querySelectorAll(
-        ".price-comparison__grid__row__element a"
-      );
-
-      let icons = document.querySelectorAll(
-        ".price-comparison__grid__row__element a img"
-      );
 
       const posterElement =
-        document.querySelector(
-          ".title-poster.title-poster--no-radius-bottom img"
-        ) || {};
+        document.querySelector(".title-poster__image") || {};
+      const poster = posterElement.src.replace("s166", "s332");
 
-      poster = posterElement.src;
+      const elements = document.querySelector(
+        ".price-comparison__grid__row__holder"
+      ).childNodes;
 
       for (let i = 0; i < elements.length; i++) {
-        const url = new URL(
-          decodeURIComponent(elements[i].getAttribute("href"))
-        );
-        const provider = elements[i].childNodes[0].getAttribute("alt");
-        const providerUrl = url.searchParams.get("r");
-        const alreadyExists = ottProviders.some(
-          (item) => item.provider === provider
-        );
+        if (elements[i].tagName === "DIV") {
+          const link = elements[i].childNodes[0].childNodes[0];
+          const url = new URL(decodeURIComponent(link.href));
+          const provider = link.childNodes[0].getAttribute("alt");
+          const icon = link.childNodes[0].getAttribute("src");
+          const providerUrl = url.searchParams.get("r");
 
-        if (!alreadyExists) {
-          ottProviders.push({
-            provider,
-            url: providerUrl,
-            icon: icons[i].getAttribute("src"),
-          });
+          const alreadyExists = ottProviders.some(
+            (item) => item.provider === provider
+          );
+
+          if (!alreadyExists)
+            ottProviders.push({
+              provider,
+              icon,
+              url: providerUrl,
+            });
         }
       }
       return { ottProviders, poster };
@@ -100,11 +95,11 @@ app.get("/", (req, res) => {
 
 app.use(initPuppeteer);
 
-// API Route to seatch for a title
+// API Route to search for title/s
 app.get("/search", async (req, res) => {
-  let { titles = "", json = false, locale = "in" } = req.query;
+  let { titles = "", json = false, locale = "in", type = "" } = req.query;
   titles = titles.split(",").map((item) => item.trim());
-  const slugifiedTitles = titles.map((item) => item.replace(/[\s]+/g, "-"));
+  const slugifiedTitles = titles.map((item) => encodeURIComponent(item));
   const returnObj = { data: [], results: 0 };
 
   for (let i = 0; i < slugifiedTitles.length; i++) {
@@ -113,6 +108,7 @@ app.get("/search", async (req, res) => {
     const { poster = "N/A", ottProviders = [] } = await scrape(
       slugifiedTitles[i],
       locale,
+      type,
       page
     );
     if (ottProviders.length) returnObj.results++;

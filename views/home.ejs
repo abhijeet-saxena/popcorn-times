@@ -30,7 +30,7 @@
 
       form h1 {
         font-size: 5rem;
-        margin: 2rem 0;
+        margin: 1rem 0;
         font-family: "Londrina Shadow", cursive;
       }
 
@@ -114,7 +114,8 @@
       <h1>Popcorn</h1>
       <div class="input-group">
         <label for="titles"
-          >Enter TV Series / Movie Title to get OTT providers:</label
+          >Enter TV Series / Movie Title to find out live stream
+          providers:</label
         >
         <select name="locale" id="locale">
           <option value="in">🇮🇳</option>
@@ -133,6 +134,10 @@
         />
       </div>
       <br />
+      <!-- <select name="type" id="type">
+        <option value="show">Show</option>
+        <option value="movie">Movie</option>
+      </select> -->
       <button id="submit" type="submit">Search Title</button>
     </form>
     <%- include('./partials/footer') %>
