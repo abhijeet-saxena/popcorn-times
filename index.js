@@ -22,7 +22,8 @@ const initPuppeteer = async function (req, res, next) {
 };
 
 const scrape = async (title, locale, type, page) => {
-  const searchURL = `https://www.justwatch.com/${locale}/search?q=${title}&content_type=${type}`;
+  let searchURL = `https://www.justwatch.com/${locale}/search?q=${title}`;
+  if (type === "show" || type === "movie") searchURL += `&content_type=${type}`;
 
   try {
     // This will allow logging in dev environment
@@ -97,7 +98,7 @@ app.use(initPuppeteer);
 
 // API Route to search for title/s
 app.get("/search", async (req, res) => {
-  let { titles = "", json = false, locale = "in", type = "" } = req.query;
+  let { titles = "", json = false, locale = "in", type = "all" } = req.query;
   titles = titles.split(",").map((item) => item.trim());
   const slugifiedTitles = titles.map((item) => encodeURIComponent(item));
   const returnObj = { data: [], results: 0 };
