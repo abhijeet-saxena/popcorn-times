@@ -28,18 +28,27 @@
         align-items: center;
       }
 
-      form h1 {
-        font-size: 5rem;
-        margin: 1rem 0;
-        font-family: "Londrina Shadow", cursive;
+      .input-group {
+        position: relative;
+        width: 60vw;
+        display: flex;
+        flex-direction: column;
       }
 
       form input {
+        color: white;
+        background: transparent;
         padding: 1rem;
-        padding-left: 3rem;
-        border: solid 1px rgba(0, 0, 0, 0.5);
+        padding-left: 4rem;
+        border: solid 1px #ffffff;
         border-radius: 5px;
-        background: white;
+        caret-color: currentColor;
+        font-size: 1rem;
+      }
+
+      form input::placeholder {
+        color: #888;
+        font-size: 1rem;
       }
 
       form label {
@@ -48,32 +57,35 @@
         padding-bottom: 0.5rem;
       }
 
-      .input-group {
-        position: relative;
-        width: 60vw;
-        display: flex;
-        flex-direction: column;
-      }
-
       form select {
         -o-appearance: none;
         -ms-appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
+        border: none;
 
-        height: 47px;
-        padding: 0.25rem;
-        font-size: 2rem;
         position: absolute;
         bottom: 0;
-        left: 0;
+        height: 100%;
         z-index: 1;
-        background: white;
-        border-radius: 0px;
-        border-right: none;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+        padding: 0.5rem;
+        text-align-last: center;
+        background: transparent;
+        color: white;
+        border-radius: 0;
+      }
+
+      #locale {
+        left: 0;
+        font-size: 2rem;
+        border-right: solid 1px white;
+      }
+
+      #type {
+        right: 0;
+        font-size: 1.5rem;
+        border-left: solid 1px white;
       }
 
       form button {
@@ -98,11 +110,17 @@
       }
 
       @media only screen and (max-width: 600px) {
-        form h1 {
-          font-size: 4rem;
-        }
         .input-group {
-          width: 80vw;
+          width: 90vw;
+        }
+        form input {
+          padding-left: 3rem;
+        }
+        #locale {
+          font-size: 1.6rem;
+        }
+        #type {
+          font-size: 1.25rem;
         }
       }
     </style>
@@ -111,12 +129,10 @@
   <body>
     <%- include('./partials/header') %>
     <form onsubmit="submitForm()" action="/search" method="GET">
-      <h1>Popcorn</h1>
+      <label for="titles"
+        >Enter TV Series / Movie Title to find out live stream providers:</label
+      >
       <div class="input-group">
-        <label for="titles"
-          >Enter TV Series / Movie Title to find out live stream
-          providers:</label
-        >
         <select name="locale" id="locale">
           <option value="in">🇮🇳</option>
           <option value="us">🇺🇸</option>
@@ -132,13 +148,14 @@
           autocomplete="off"
           autofocus
         />
+        <select name="type" id="type">
+          <option value="all">📺 + 🎬</option>
+          <option value="show">📺 TV</option>
+          <option value="movie">🎬 Movie</option>
+        </select>
       </div>
       <br />
-      <!-- <select name="type" id="type">
-        <option value="show">Show</option>
-        <option value="movie">Movie</option>
-      </select> -->
-      <button id="submit" type="submit">Search Title</button>
+      <button id="submit" type="submit">Search</button>
     </form>
     <%- include('./partials/footer') %>
   </body>
