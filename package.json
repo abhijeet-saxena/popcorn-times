@@ -1,7 +1,7 @@
 {
-  "name": "web-crawler",
+  "name": "popcorn",
   "version": "1.0.0",
-  "description": "A simple web crawler to search for OTT providers",
+  "description": "Ever stuck searching for your favorite TV Shows and Movies. Worry Not ! Now you can easily search for them on Netflix, Amazon Prime Video, Hotstar and many more. So just sit back 🛋️, grab some Popcorn 🍿and enjoy 🤩",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itsRockyy/web-crawler.git"
+    "url": "git+https://github.com/itsRockyy/popcorn.git"
   },
   "keywords": [
     "web",
@@ -17,7 +17,7 @@
   ],
   "author": "Abhijeet Saxena",
   "license": "MIT",
-  "homepage": "https://bms-web-scrapper.herokuapp.com/Add domain",
+  "homepage": "https://popcorn-times.herokuapp.com/",
   "dependencies": {
     "cors": "^2.8.5",
     "ejs": "^3.0.2",

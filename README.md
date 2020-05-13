@@ -4,7 +4,7 @@
 
 A simple web crawler that searches OTT providers for a particular TV series or movie.
 
-https://bms-web-scrapper.herokuapp.com
+https://popcorn-times.herokuapp.com
 
 ## Technical Implementation
 
@@ -13,7 +13,7 @@ App levereges [Puppeteer](https://pptr.dev/) to scrape the information and [Node
 
 ## JSON API Endpoint
 
-https://bms-web-scrapper.herokuapp.com/search?titles=[slugified-search-string]&json=true
+https://popcorn-times.herokuapp.com/search?titles=[slugified-search-string]&json=true
 
 ### Sample Response
 
@@ -80,7 +80,7 @@ function updateProviders() {
     var inputTitle = sheet.getRange(row, 2).getValue();
     if(inputTitle === "") continue;
 
-    var apiResponse = UrlFetchApp.fetch("https://bms-web-scrapper.herokuapp.com/search?titles="+inputTitle+"&json=true");
+    var apiResponse = UrlFetchApp.fetch("https://popcorn-times.herokuapp.com/search?titles="+inputTitle+"&json=true");
     var response = JSON.parse(apiResponse.getContentText());
     var providers = response.data[0].ottProviders
 
@@ -99,7 +99,7 @@ function runOnEdit(e) {
  var inputTitle = e.range.getSheet().getActiveCell().getValue();
  var row = e.range.getSheet().getActiveCell().getRow();
 
- var apiResponse = UrlFetchApp.fetch("https://bms-web-scrapper.herokuapp.com/search?titles="+inputTitle+"&json=true");
+ var apiResponse = UrlFetchApp.fetch("https://popcorn-times.herokuapp.com/search?titles="+inputTitle+"&json=true");
  var response = JSON.parse(apiResponse.getContentText());
  var providers = response.data[0].ottProviders
 
