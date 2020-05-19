@@ -9,6 +9,18 @@ app.use(cors());
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
+const localeAndSearchMap = new Map([
+  ["in", "search"],
+  ["us", "search"],
+  ["uk", "search"],
+  ["ca", "search"],
+  ["au", "search"],
+  ["fr", "recherche"],
+  ["de", "Suche"],
+  ["it", "cerca"],
+  ["es", "buscar"],
+]);
+
 let browser = null;
 
 const initPuppeteer = async function (req, res, next) {
@@ -22,7 +34,8 @@ const initPuppeteer = async function (req, res, next) {
 };
 
 const scrape = async (title, locale, type, page) => {
-  let searchURL = `https://www.justwatch.com/${locale}/search?q=${title}`;
+  const searchAlias = localeAndSearchMap.get(locale) || "search";
+  let searchURL = `https://www.justwatch.com/${locale}/${searchAlias}?q=${title}`;
   if (type === "show" || type === "movie") searchURL += `&content_type=${type}`;
 
   try {
