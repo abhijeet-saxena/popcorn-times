@@ -53,8 +53,7 @@ const scrape = async (title, locale, type, page) => {
     const scrappedInfo = await page.evaluate(async () => {
       const ottProviders = [];
 
-      const posterElement =
-        document.querySelector(".title-poster__image") || {};
+      const posterElement = document.querySelector(".title-poster__image img");
       const poster = posterElement.src.replace("s166", "s332");
 
       const titles =
