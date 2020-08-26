@@ -58,14 +58,11 @@ const scrape = async (title, locale, type, page) => {
 
       const titles =
         document.querySelectorAll(".title-list-row__row__title") || [];
-      const titleYear =
-        document.querySelectorAll(".title-list-row__row--muted") || [];
       let searchSuggestions = [];
 
       for (let i = 1; i < titles.length; i++) {
         searchSuggestions.push({
           titleName: titles[i].innerText,
-          titleYear: titleYear[i].innerText,
         });
       }
 
