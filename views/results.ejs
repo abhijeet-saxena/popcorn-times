@@ -161,8 +161,7 @@
           <% for(var ii = 0; ii < data[i].searchSuggestions.length; ii++) { %>
           <% if(!data[i].searchSuggestions[ii].titleName) continue %>
           <a href="<%= data[i].searchSuggestions[ii].titleLink %>">
-            <%= data[i].searchSuggestions[ii].titleName %> (<%=
-            data[i].searchSuggestions[ii].titleYear %>)
+            <%= data[i].searchSuggestions[ii].titleName %>
           </a>
           <% } %>
         </div>
