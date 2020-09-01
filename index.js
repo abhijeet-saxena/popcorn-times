@@ -58,13 +58,13 @@ const scrape = async (title, locale, type, page) => {
 
       const titles =
         document.querySelectorAll(".title-list-row__row__title") || [];
-      let searchSuggestions = [];
+      const imdbRating = document.querySelector(
+        ".jw-scoring-listing__rating--no-link"
+      ).innerText;
 
-      for (let i = 1; i < titles.length; i++) {
-        searchSuggestions.push({
-          titleName: titles[i].innerText,
-        });
-      }
+      let searchSuggestions = Array.from(titles).map((item) => ({
+        titleName: item.innerText,
+      }));
 
       const elements = document.querySelector(".monetizations").children;
       for (let i = 0; i < elements.length; i++) {
@@ -89,7 +89,7 @@ const scrape = async (title, locale, type, page) => {
         }
       }
 
-      return { ottProviders, poster, searchSuggestions };
+      return { ottProviders, poster, searchSuggestions, imdbRating };
     });
     await page.close();
     return scrappedInfo;
@@ -126,6 +126,7 @@ app.get("/search", async (req, res) => {
       poster = "N/A",
       ottProviders = [],
       searchSuggestions = [],
+      imdbRating = null,
     } = await scrape(slugifiedTitles[i], locale, type, page);
     if (ottProviders.length) returnObj.results++;
 
@@ -139,6 +140,7 @@ app.get("/search", async (req, res) => {
       poster,
       ottProviders,
       searchSuggestions,
+      imdbRating,
     });
   }
 
