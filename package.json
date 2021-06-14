@@ -4,27 +4,33 @@
   "description": "Ever stuck searching for your favorite TV Shows and Movies. Worry Not ! Now you can easily search for them on Netflix, Amazon Prime Video, Hotstar and many more. So just sit back 🛋️, grab some Popcorn 🍿and enjoy 🤩",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "TIER=dev nodemon index.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itsRockyy/popcorn.git"
+    "url": "git+https://github.com/itsRockyy/popcorn-times.git"
   },
   "keywords": [
-    "web",
-    "crawler"
+    "react"
   ],
   "author": "Abhijeet Saxena",
   "license": "MIT",
-  "homepage": "https://popcorn-times.herokuapp.com/",
   "dependencies": {
-    "cors": "^2.8.5",
-    "ejs": "^3.0.2",
-    "express": "^4.17.1",
-    "puppeteer": "^3.0.1"
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^1.1.5",
+    "web-vitals": "^1.1.2"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.3"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   }
 }
