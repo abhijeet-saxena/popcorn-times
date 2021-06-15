@@ -1,11 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Home";
-import Results from "./Results";
+import Nav from "./components/Nav";
+import Home from "./components/Home";
+import Results from "./components/Results";
+import Footer from "./components/Footer";
 
 function App() {
   return (
     <div className="container">
+      <Nav />
       <Router>
         <Switch>
           <Route path="/results" exact>
@@ -16,6 +19,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <Footer />
     </div>
   );
 }
