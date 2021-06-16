@@ -13,24 +13,22 @@
 
 .container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url("./assets//background-overlay.jpg");
   background-size: cover;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
 
 /* Header Styles */
 
 nav {
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
   display: flex;
-  padding: 1rem;
+  width: 100%;
 }
 
 nav .logo a {
@@ -274,27 +272,24 @@ main {
 }
 
 @media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 2.25rem;
+  main {
+    flex-direction: column;
+    margin-top: 5rem;
+    align-items: center;
   }
   .search-results {
-    padding: 0;
-    flex-basis: 60%;
+    border: none;
   }
   .search-suggestions {
-    flex-basis: 40%;
-    padding: 0 1rem;
+    margin-bottom: 5rem;
+    text-align: center;
   }
 }
 
 /* Footer Styles */
 
 footer {
-  position: fixed;
   display: flex;
-  bottom: 1rem;
-  width: 100%;
-  justify-content: center;
 }
 
 footer svg {
@@ -316,5 +311,29 @@ footer a {
 @media (max-width: 480px) {
   .about a {
     margin: 0 0.5rem;
+  }
+}
+
+/* Skeleton Styles */
+
+.loader {
+  height: 304px;
+  width: 175px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(0.25turn, transparent, lightgray, transparent),
+    linear-gradient(#eee, #eee), linear-gradient(#eee, #eee),
+    linear-gradient(#eee, #eee), linear-gradient(#eee, #eee);
+  background-repeat: no-repeat;
+  background-size: 175px 304px, 175px 250px, 35px 35px, 35px 35px, 35px 35px;
+  background-position: -175px 0, 0 0, 25px 260px, 70px 260px, 115px 260px;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  to {
+    background-position: 175px 0, 0 0, 25px 260px, 70px 260px, 115px 260px;
   }
 }
