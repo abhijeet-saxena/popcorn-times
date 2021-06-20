@@ -1,0 +1,310 @@
+{
+  "2": {
+    "name": "Apple iTunes",
+    "imgUrl": "https://www.justwatch.com/images/icon/190848813/s100"
+  },
+  "3": {
+    "name": "Google Play Movies",
+    "imgUrl": "https://www.justwatch.com/images/icon/169478387/s100"
+  },
+  "8": {
+    "name": "Netflix",
+    "imgUrl": "https://www.justwatch.com/images/icon/207360008/s100"
+  },
+  "10": {
+    "name": "Amazon Video",
+    "imgUrl": "https://www.justwatch.com/images/icon/430993/s100"
+  },
+  "11": {
+    "name": "Mubi",
+    "imgUrl": "https://www.justwatch.com/images/icon/164970114/s100"
+  },
+  "25": {
+    "name": "Fandor",
+    "imgUrl": "https://www.justwatch.com/images/icon/554608/s100"
+  },
+  "68": {
+    "name": "Microsoft Store",
+    "imgUrl": "https://www.justwatch.com/images/icon/820542/s100"
+  },
+  "73": {
+    "name": "Tubi TV",
+    "imgUrl": "https://www.justwatch.com/images/icon/104966985/s100"
+  },
+  "78": {
+    "name": "CBS",
+    "imgUrl": "https://www.justwatch.com/images/icon/920372/s100"
+  },
+  "81": {
+    "name": "Movietickets",
+    "imgUrl": "https://www.justwatch.com/images/icon/922529/s100"
+  },
+  "87": {
+    "name": "Acorn TV",
+    "imgUrl": "https://www.justwatch.com/images/icon/151881328/s100"
+  },
+  "99": {
+    "name": "Shudder",
+    "imgUrl": "https://www.justwatch.com/images/icon/2562359/s100"
+  },
+  "100": {
+    "name": "GuideDoc",
+    "imgUrl": "https://www.justwatch.com/images/icon/2625277/s100"
+  },
+  "119": {
+    "name": "Amazon Prime Video",
+    "imgUrl": "https://www.justwatch.com/images/icon/52449861/s100"
+  },
+  "122": {
+    "name": "Hotstar",
+    "imgUrl": "https://www.justwatch.com/images/icon/240029443/s100"
+  },
+  "140": {
+    "name": "Cineplex",
+    "imgUrl": "https://www.justwatch.com/images/icon/5278783/s100"
+  },
+  "143": {
+    "name": "Sundance Now",
+    "imgUrl": "https://www.justwatch.com/images/icon/5676163/s100"
+  },
+  "146": {
+    "name": "iciTouTV",
+    "imgUrl": "https://www.justwatch.com/images/icon/5827076/s100"
+  },
+  "151": {
+    "name": "BritBox",
+    "imgUrl": "https://www.justwatch.com/images/icon/6368831/s100"
+  },
+  "175": {
+    "name": "Netflix Kids",
+    "imgUrl": "https://www.justwatch.com/images/icon/14385750/s100"
+  },
+  "177": {
+    "name": "Pantaflix",
+    "imgUrl": "https://www.justwatch.com/images/icon/93814499/s100"
+  },
+  "182": {
+    "name": "Hollywood Suite",
+    "imgUrl": "https://www.justwatch.com/images/icon/240029384/s100"
+  },
+  "188": {
+    "name": "YouTube Premium",
+    "imgUrl": "https://www.justwatch.com/images/icon/70189310/s100"
+  },
+  "190": {
+    "name": "Curiosity Stream",
+    "imgUrl": "https://www.justwatch.com/images/icon/48600036/s100"
+  },
+  "192": {
+    "name": "YouTube",
+    "imgUrl": "https://www.justwatch.com/images/icon/59562423/s100"
+  },
+  "194": {
+    "name": "Starz Play Amazon Channel",
+    "imgUrl": "https://www.justwatch.com/images/icon/241732487/s100"
+  },
+  "212": {
+    "name": "Hoopla",
+    "imgUrl": "https://www.justwatch.com/images/icon/80212823/s100"
+  },
+  "223": {
+    "name": "hayu",
+    "imgUrl": "https://www.justwatch.com/images/icon/89154446/s100"
+  },
+  "230": {
+    "name": "Crave",
+    "imgUrl": "https://www.justwatch.com/images/icon/92692011/s100"
+  },
+  "231": {
+    "name": "Crave Plus",
+    "imgUrl": "https://www.justwatch.com/images/icon/92692012/s100"
+  },
+  "241": {
+    "name": "Popcornflix",
+    "imgUrl": "https://www.justwatch.com/images/icon/109299737/s100"
+  },
+  "254": {
+    "name": "Dove Channel",
+    "imgUrl": "https://www.justwatch.com/images/icon/123316731/s100"
+  },
+  "258": {
+    "name": "Criterion Channel",
+    "imgUrl": "https://www.justwatch.com/images/icon/124249135/s100"
+  },
+  "283": {
+    "name": "Crunchyroll",
+    "imgUrl": "https://www.justwatch.com/images/icon/127445869/s100"
+  },
+  "305": {
+    "name": "Crave Starz",
+    "imgUrl": "https://www.justwatch.com/images/icon/135207354/s100"
+  },
+  "309": {
+    "name": "Sun Nxt",
+    "imgUrl": "https://www.justwatch.com/images/icon/138047862/s100"
+  },
+  "314": {
+    "name": "CBC Gem",
+    "imgUrl": "https://www.justwatch.com/images/icon/140132304/s100"
+  },
+  "315": {
+    "name": "Hoichoi",
+    "imgUrl": "https://www.justwatch.com/images/icon/141253805/s100"
+  },
+  "326": {
+    "name": "CTV",
+    "imgUrl": "https://www.justwatch.com/images/icon/142828658/s100"
+  },
+  "331": {
+    "name": "FlixFling",
+    "imgUrl": "https://www.justwatch.com/images/icon/147271109/s100"
+  },
+  "337": {
+    "name": "Disney Plus",
+    "imgUrl": "https://www.justwatch.com/images/icon/147638351/s100"
+  },
+  "348": {
+    "name": "FXNow Canada",
+    "imgUrl": "https://www.justwatch.com/images/icon/152779709/s100"
+  },
+  "350": {
+    "name": "Apple TV Plus",
+    "imgUrl": "https://www.justwatch.com/images/icon/152862153/s100"
+  },
+  "355": {
+    "name": "Darkmatter TV",
+    "imgUrl": "https://www.justwatch.com/images/icon/155553229/s100"
+  },
+  "427": {
+    "name": "Mhz Choice",
+    "imgUrl": "https://www.justwatch.com/images/icon/200839772/s100"
+  },
+  "430": {
+    "name": "HiDive",
+    "imgUrl": "https://www.justwatch.com/images/icon/201071617/s100"
+  },
+  "433": {
+    "name": "OVID",
+    "imgUrl": "https://www.justwatch.com/images/icon/201697454/s100"
+  },
+  "441": {
+    "name": "NFB",
+    "imgUrl": "https://www.justwatch.com/images/icon/202043776/s100"
+  },
+  "444": {
+    "name": "Dekkoo",
+    "imgUrl": "https://www.justwatch.com/images/icon/202068207/s100"
+  },
+  "446": {
+    "name": "Retrocrush",
+    "imgUrl": "https://www.justwatch.com/images/icon/202068535/s100"
+  },
+  "449": {
+    "name": "Global TV",
+    "imgUrl": "https://www.justwatch.com/images/icon/202330165/s100"
+  },
+  "454": {
+    "name": "Topic",
+    "imgUrl": "https://www.justwatch.com/images/icon/202921120/s100"
+  },
+  "457": {
+    "name": "VIX ",
+    "imgUrl": "https://www.justwatch.com/images/icon/202926990/s100"
+  },
+  "464": {
+    "name": "Kocowa",
+    "imgUrl": "https://www.justwatch.com/images/icon/207331738/s100"
+  },
+  "469": {
+    "name": "Club Illico",
+    "imgUrl": "https://www.justwatch.com/images/icon/207967219/s100"
+  },
+  "475": {
+    "name": "DOCSVILLE",
+    "imgUrl": "https://www.justwatch.com/images/icon/208148387/s100"
+  },
+  "488": {
+    "name": "tvo",
+    "imgUrl": "https://www.justwatch.com/images/icon/208860122/s100"
+  },
+  "492": {
+    "name": "ILLICO",
+    "imgUrl": "https://www.justwatch.com/images/icon/208862776/s100"
+  },
+  "495": {
+    "name": "CGood TV",
+    "imgUrl": "https://www.justwatch.com/images/icon/208864843/s100"
+  },
+  "514": {
+    "name": "AsianCrush",
+    "imgUrl": "https://www.justwatch.com/images/icon/209565865/s100"
+  },
+  "516": {
+    "name": "Noovo",
+    "imgUrl": "https://www.justwatch.com/images/icon/210188320/s100"
+  },
+  "521": {
+    "name": "Spamflix",
+    "imgUrl": "https://www.justwatch.com/images/icon/240831409/s100"
+  },
+  "525": {
+    "name": "Knowledge Network",
+    "imgUrl": "https://www.justwatch.com/images/icon/241370745/s100"
+  },
+  "529": {
+    "name": "ARROW",
+    "imgUrl": "https://www.justwatch.com/images/icon/241658074/s100"
+  },
+  "534": {
+    "name": "Argo",
+    "imgUrl": "https://www.justwatch.com/images/icon/242706549/s100"
+  },
+  "535": {
+    "name": "digital TIFF Bell Lightbox",
+    "imgUrl": "https://www.justwatch.com/images/icon/243049004/s100"
+  },
+  "536": {
+    "name": "Dogwoof On Demand",
+    "imgUrl": "https://www.justwatch.com/images/icon/242710905/s100"
+  },
+  "546": {
+    "name": "WOW Presents Plus",
+    "imgUrl": "https://www.justwatch.com/images/icon/243229654/s100"
+  },
+  "550": {
+    "name": "Tenk",
+    "imgUrl": "https://www.justwatch.com/images/icon/243232755/s100"
+  },
+  "551": {
+    "name": "Magellan TV",
+    "imgUrl": "https://www.justwatch.com/images/icon/243233518/s100"
+  },
+  "554": {
+    "name": "BroadwayHD",
+    "imgUrl": "https://www.justwatch.com/images/icon/243239329/s100"
+  },
+  "559": {
+    "name": "Filmzie",
+    "imgUrl": "https://www.justwatch.com/images/icon/243251295/s100"
+  },
+  "567": {
+    "name": "True Story",
+    "imgUrl": "https://www.justwatch.com/images/icon/244289819/s100"
+  },
+  "569": {
+    "name": "DocAlliance Films",
+    "imgUrl": "https://www.justwatch.com/images/icon/244290074/s100"
+  },
+  "575": {
+    "name": "KoreaOnDemand",
+    "imgUrl": "https://www.justwatch.com/images/icon/244592296/s100"
+  },
+  "579": {
+    "name": "Film Movement Plus",
+    "imgUrl": "https://www.justwatch.com/images/icon/244703360/s100"
+  },
+  "581": {
+    "name": "iQIYI",
+    "imgUrl": "https://www.justwatch.com/images/icon/245741856/s100"
+  }
+}
