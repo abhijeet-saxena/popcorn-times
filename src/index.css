@@ -14,8 +14,8 @@
 .container {
   width: 100vw;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("./assets//background-overlay.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("./assets/background.webp");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -257,13 +257,12 @@ main {
 
 .imdb {
   display: flex;
-  gap: 4px;
   position: absolute;
+  width: 60px;
   top: 4px;
   right: 8px;
   align-items: center;
   background: rgba(0, 0, 0, 0.75);
-  padding: 0 4px;
   border-radius: 4px;
 }
 
