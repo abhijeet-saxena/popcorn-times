@@ -225,8 +225,8 @@ main {
 }
 
 .card .poster {
-  width: 175px;
-  height: 250px;
+  width: 245px;
+  height: 350px;
   border-radius: 4px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -235,12 +235,13 @@ main {
 .links {
   display: flex;
   flex-wrap: wrap;
-  max-width: 175px;
+  max-width: 245px;
   justify-content: center;
   background: rgba(255, 255, 255, 0.25);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  padding: 10px 5px 0;
+  padding: 1rem;
+  gap: 1rem;
 }
 
 .links a {
@@ -248,11 +249,9 @@ main {
 }
 
 .links img {
-  width: 35px;
-  height: 35px;
-  margin: 0 5px 5px;
-  border-radius: 5px;
-  border: solid 1px rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
 }
 
 .imdb {
@@ -273,8 +272,9 @@ main {
 @media only screen and (max-width: 600px) {
   main {
     flex-direction: column;
-    margin-top: 5rem;
+    margin: 2rem;
     align-items: center;
+    gap: 2rem;
   }
   .search-results {
     border: none;
@@ -316,8 +316,8 @@ footer a {
 /* Skeleton Styles */
 
 .loader {
-  height: 304px;
-  width: 175px;
+  height: 400px;
+  width: 245px;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
@@ -326,13 +326,13 @@ footer a {
     linear-gradient(#eee, #eee), linear-gradient(#eee, #eee),
     linear-gradient(#eee, #eee), linear-gradient(#eee, #eee);
   background-repeat: no-repeat;
-  background-size: 175px 304px, 175px 250px, 35px 35px, 35px 35px, 35px 35px;
-  background-position: -175px 0, 0 0, 25px 260px, 70px 260px, 115px 260px;
+  background-size: 245px 400px, 245px 325px, 40px 40px, 40px 40px, 40px 40px;
+  background-position: -245px 0, 0 0, 25px 340px, 80px 340px, 135px 340px;
   animation: loading 1.5s infinite;
 }
 
 @keyframes loading {
   to {
-    background-position: 175px 0, 0 0, 25px 260px, 70px 260px, 115px 260px;
+    background-position: 245px 0, 0 0, 25px 340px, 80px 340px, 135px 340px;
   }
 }
