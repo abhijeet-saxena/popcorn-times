@@ -9,7 +9,7 @@ const Home = () => {
     const [locale, q, type] = e.target.elements;
 
     history.push(
-      `/results?q=${q.value}&locale=${locale.value}&type=${type.value}&index=0`
+      `/results?q=${q.value}&locale=${locale.value}&type=${type.value}`
     );
   };
 
