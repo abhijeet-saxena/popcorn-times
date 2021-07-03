@@ -81,14 +81,16 @@ const Results = () => {
             {!loading && (
               <div className="search-suggestions">
                 <h3>Similar Results</h3>
-                {result.searchSuggestions.map((item, index) => (
-                  <a
-                    key={item + index}
-                    href={`/results${search}&index=${index}`}
-                  >
-                    {item}
-                  </a>
-                ))}
+                {result.searchSuggestions.map((item, index) =>
+                  item ? (
+                    <a
+                      key={item + index}
+                      href={`/results${search}&index=${index}`}
+                    >
+                      {item}
+                    </a>
+                  ) : null
+                )}
               </div>
             )}
           </div>
