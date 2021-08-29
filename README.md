@@ -4,7 +4,7 @@
 
 A simple web crawler that searches OTT providers for a particular TV series or movie.
 
-https://popcorn-times.herokuapp.com
+https://popcorn-times.netlify.app
 
 ## Technical Implementation
 
@@ -13,7 +13,7 @@ App levereges [Puppeteer](https://pptr.dev/) to scrape the information and [Node
 
 ## JSON API Endpoint
 
-https://popcorn-times.herokuapp.com/search?titles=[slugified-search-string]&json=true
+https://popcorn-times.netlify.app/search?titles=[slugified-search-string]&json=true
 
 ### Sample Response
 
@@ -120,4 +120,4 @@ This website may contain copyrighted material, the use of which may not have bee
 
 If you wish to use any copyrighted material from this site for purposes of your own that go beyond ‘fair use’, you must obtain expressed permission from the copyright owner.
 
-Made with ️❤︎ by **[Rocky](https://itsrockyy.me/ "Abhijeet Saxena")**
+Made with ️❤︎ by **[Abhijeet](https://abhijeetsaxena.in/ "Abhijeet Saxena")**
