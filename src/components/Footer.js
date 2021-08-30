@@ -11,7 +11,7 @@ const Footer = () => {
         />
       </svg>
       by
-      <a href="https://itsRockyy.me">itsRockyy</a>
+      <a href="https://abhijeetsaxena.in">Abhijeet</a>
     </footer>
   );
 };
