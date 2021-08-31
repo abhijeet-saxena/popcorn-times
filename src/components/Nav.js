@@ -11,7 +11,7 @@ const Nav = () => {
       <div className="about">
         <a
           className="social-action-icons"
-          href="https://www.facebook.com/dialog/feed?app_id=333853130926436&display=popup&link=https://github.com/itsRockyy/popcorn"
+          href="https://www.facebook.com/dialog/feed?app_id=333853130926436&display=popup&link=https://github.com/abhijeet-saxena/popcorn-times"
         >
           <svg width="24" height="24" viewBox="0 0 320 512">
             <path
@@ -23,7 +23,7 @@ const Nav = () => {
 
         <a
           className="social-action-icons"
-          href="https://twitter.com/intent/tweet?text=Ever stuck searching for your favorite TV Shows and Movies. Worry Not ! Now you can easily search for them on Netflix, Amazon Prime Video, Hotstar and many more. So just sit back 🛋️, grab some Popcorn 🍿and enjoy 🤩 https://popcorn-times.herokuapp.com/. %23popcorn %23github%0D&url=https://github.com/itsRockyy/popcorn"
+          href="https://twitter.com/intent/tweet?text=Ever stuck searching for your favorite TV Shows and Movies. Worry Not ! Now you can easily search for them on Netflix, Amazon Prime Video, Hotstar and many more. So just sit back 🛋️, grab some Popcorn 🍿and enjoy 🤩 https://popcorn-times.herokuapp.com/. %23popcorn %23github%0D&url=https://github.com/abhijeet-saxena/popcorn-times"
         >
           <svg width="24" height="24" viewBox="0 0 512 512">
             <path
@@ -34,7 +34,7 @@ const Nav = () => {
         </a>
         <a
           className="social-action-icons"
-          href="https://github.com/itsRockyy/popcorn"
+          href="https://github.com/abhijeet-saxena/popcorn-times"
         >
           <svg width="30" height="30" viewBox="0 0 496 512">
             <path
