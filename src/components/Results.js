@@ -10,7 +10,7 @@ const Results = () => {
   } = useHistory();
 
   useEffect(() => {
-    fetch(`https://itsrockyy-api.netlify.app/popcorn${search}`)
+    fetch(`https://api.abhijeetsaxena.in/popcorn${search}`)
       .then((res) => res.json())
       .then((data) => {
         setResult(data);
